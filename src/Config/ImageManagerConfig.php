@@ -9,7 +9,9 @@
 namespace EasySwoole\Ueditor\Config;
 
 
-class ImageManagerConfig
+use EasySwoole\Spl\SplBean;
+
+class ImageManagerConfig extends SplBean
 {
     /* 列出指定目录下的图片 */
     protected $imageManagerActionName = 'listimage';

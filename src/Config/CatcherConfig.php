@@ -14,13 +14,14 @@ use EasySwoole\Spl\SplBean;
 class CatcherConfig extends SplBean
 {
     /* 抓取远程图片配置 */
+    protected $catcherActionName = 'catchImage';
     protected $catcherLocalDomain = ['127.0.0.1', 'localhost', 'img.baidu.com',];
-    protected $catcherActionName = 'catchimage'; /* 执行抓取远程图片的action名称 */
     protected $catcherFieldName = 'source'; /* 提交的图片列表表单名称 */
     protected $catcherPathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}'; /* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $catcherUrlPrefix = ''; /* 图片访问路径前缀 */
     protected $catcherMaxSize = 2048000; /* 上传大小限制，单位B */
-    protected $catcherAllowFiles = ['.png', '.jpg', '.jpeg', '.gif', '.bmp',];
+    protected $catcherAllowFiles = ['.png', '.jpg', '.jpeg', '.gif', '.bmp',]; /* 抓取图片格式显示 */
+
 
     /**
      * @return array
@@ -132,7 +133,7 @@ class CatcherConfig extends SplBean
     public function setCatcherAllowFiles(array $catcherAllowFiles): void
     {
         $this->catcherAllowFiles = $catcherAllowFiles;
-    } /* 抓取图片格式显示 */
+    }
 
 
 }

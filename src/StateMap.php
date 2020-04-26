@@ -6,7 +6,7 @@
  * Time: 17:01
  */
 
-namespace EasySwoole\BaiduEdit;
+namespace EasySwoole\Ueditor;
 
 
 class StateMap

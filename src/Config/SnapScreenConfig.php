@@ -14,73 +14,74 @@ use EasySwoole\Spl\SplBean;
 class SnapScreenConfig extends SplBean
 {
     /* 截图工具上传 */
-    protected $SnapScreenActionName = 'uploadimage';/* 执行上传截图的action名称 */
-    protected $SnapScreenPathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}'; /* 上传保存路径,可以自定义保存路径和文件名格式 */
-    protected $SnapScreenUrlPrefix = ''; /* 图片访问路径前缀 */
-    protected $SnapScreenInsertAlign = 'none';
+    protected $snapscreeActionName = 'uploadimage';
+    protected $snapscreePathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}'; /* 上传保存路径,可以自定义保存路径和文件名格式 */
+    protected $snapscreeUrlPrefix = ''; /* 图片访问路径前缀 */
+    protected $snapscreeInsertAlign = 'none';/* 插入的图片浮动方式 */
 
     /**
      * @return string
      */
-    public function getSnapScreenActionName(): string
+    public function getSnapscreeActionName(): string
     {
-        return $this->SnapScreenActionName;
+        return $this->snapscreeActionName;
     }
 
     /**
-     * @param string $SnapScreenActionName
+     * @param string $snapscreeActionName
      */
-    public function setSnapScreenActionName(string $SnapScreenActionName): void
+    public function setSnapscreeActionName(string $snapscreeActionName): void
     {
-        $this->SnapScreenActionName = $SnapScreenActionName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSnapScreenPathFormat(): string
-    {
-        return $this->SnapScreenPathFormat;
-    }
-
-    /**
-     * @param string $SnapScreenPathFormat
-     */
-    public function setSnapScreenPathFormat(string $SnapScreenPathFormat): void
-    {
-        $this->SnapScreenPathFormat = $SnapScreenPathFormat;
+        $this->snapscreeActionName = $snapscreeActionName;
     }
 
     /**
      * @return string
      */
-    public function getSnapScreenUrlPrefix(): string
+    public function getSnapscreePathFormat(): string
     {
-        return $this->SnapScreenUrlPrefix;
+        return $this->snapscreePathFormat;
     }
 
     /**
-     * @param string $SnapScreenUrlPrefix
+     * @param string $snapscreePathFormat
      */
-    public function setSnapScreenUrlPrefix(string $SnapScreenUrlPrefix): void
+    public function setSnapscreePathFormat(string $snapscreePathFormat): void
     {
-        $this->SnapScreenUrlPrefix = $SnapScreenUrlPrefix;
+        $this->snapscreePathFormat = $snapscreePathFormat;
     }
 
     /**
      * @return string
      */
-    public function getSnapScreenInsertAlign(): string
+    public function getSnapscreeUrlPrefix(): string
     {
-        return $this->SnapScreenInsertAlign;
+        return $this->snapscreeUrlPrefix;
     }
 
     /**
-     * @param string $SnapScreenInsertAlign
+     * @param string $snapscreeUrlPrefix
      */
-    public function setSnapScreenInsertAlign(string $SnapScreenInsertAlign): void
+    public function setSnapscreeUrlPrefix(string $snapscreeUrlPrefix): void
     {
-        $this->SnapScreenInsertAlign = $SnapScreenInsertAlign;
-    } /* 插入的图片浮动方式 */
+        $this->snapscreeUrlPrefix = $snapscreeUrlPrefix;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSnapscreeInsertAlign(): string
+    {
+        return $this->snapscreeInsertAlign;
+    }
+
+    /**
+     * @param string $snapscreeInsertAlign
+     */
+    public function setSnapscreeInsertAlign(string $snapscreeInsertAlign): void
+    {
+        $this->snapscreeInsertAlign = $snapscreeInsertAlign;
+    }
+
 
 }

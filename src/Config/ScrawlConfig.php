@@ -15,12 +15,14 @@ class ScrawlConfig extends SplBean
 {
 
     /* 涂鸦图片上传配置项 */
-    protected $scrawlActionName = 'uploadscrawl';/* 执行上传涂鸦的action名称 */
+    protected $scrawlActionName='uploadScrawl';
     protected $scrawlFieldName = 'upfile';/* 提交的图片表单名称 */
     protected $scrawlPathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}';/* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $scrawlMaxSize = 2048000;/* 上传大小限制，单位B */
     protected $scrawlUrlPrefix = '';/* 图片访问路径前缀 */
     protected $scrawlInsertAlign = 'none';
+    protected $scrawlAllowFiles = ['.png', '.jpg', '.jpeg', '.gif', '.bmp',];
+
 
     /**
      * @return string
@@ -117,5 +119,22 @@ class ScrawlConfig extends SplBean
     {
         $this->scrawlInsertAlign = $scrawlInsertAlign;
     }
+
+    /**
+     * @return array
+     */
+    public function getScrawlAllowFiles(): array
+    {
+        return $this->scrawlAllowFiles;
+    }
+
+    /**
+     * @param array $scrawlAllowFiles
+     */
+    public function setScrawlAllowFiles(array $scrawlAllowFiles): void
+    {
+        $this->scrawlAllowFiles = $scrawlAllowFiles;
+    }
+
 
 }

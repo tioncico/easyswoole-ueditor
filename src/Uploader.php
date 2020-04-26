@@ -1,11 +1,11 @@
 <?php
 
-namespace EasySwoole\BaiduEdit;
+namespace EasySwoole\Ueditor;
 
 use EasySwoole\Http\Message\UploadFile;
 use EasySwoole\Http\Request;
 use EasySwoole\HttpClient\HttpClient;
-use EasySwoole\Ueditor\Config\Config;
+use EasySwoole\Ueditor\Config\UploadConfig;
 use EasySwoole\Utility\File;
 use EasySwoole\Utility\MimeType;
 use Swoole\Coroutine\System;
@@ -42,7 +42,7 @@ class Uploader
      * @param array  $config 配置项
      * @param bool   $base64 是否解析base64编码，可省略。若开启，则$fileField代表的是base64编码的字符串表单名
      */
-    public function __construct(Request $request, $fileField, Config $config, $type = self::UPLOAD_TYPE_UPLOAD)
+    public function __construct(UploadConfig $config, $fileField, ?Request $request=null, $type = self::UPLOAD_TYPE_UPLOAD)
     {
         $this->fileField = $fileField;
         $this->config = $config;
@@ -60,9 +60,7 @@ class Uploader
             case self::UPLOAD_TYPE_REMOTE:
                 $this->saveRemote();
                 break;
-
         }
-//        $this->stateMap['ERROR_TYPE_NOT_ALLOWED'] = iconv('unicode', 'utf-8', $this->stateMap['ERROR_TYPE_NOT_ALLOWED']);
     }
 
     /**
@@ -130,7 +128,7 @@ class Uploader
      */
     private function upBase64()
     {
-        $base64Data =$this->request->getRequestParam($this->fileField);
+        $base64Data = $this->request->getRequestParam($this->fileField);
         $img = base64_decode($base64Data);
 
         $this->oriName = $this->config->getOriName();
@@ -157,7 +155,7 @@ class Uploader
         }
 
         //写入文件
-        if (!File::createFile($this->filePath,$img)) { //写入文件
+        if (!File::createFile($this->filePath, $img)) { //写入文件
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
         } else { //移动成功
             $this->stateInfo = StateMap::MAP_ARR[0];
@@ -192,7 +190,7 @@ class Uploader
         $host_without_protocol = count($matches) > 1 ? $matches[1] : '';
 
         // 此时提取出来的可能是 ip 也有可能是域名，先获取 ip
-        $ip =System::gethostbyname($host_without_protocol);
+        $ip = System::gethostbyname($host_without_protocol);
         // 判断是否是私有 ip
         if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)) {
             $this->stateInfo = $this->getStateInfo("INVALID_IP");
@@ -242,7 +240,7 @@ class Uploader
         }
 
         //写入文件
-        if (!File::createFile($this->filePath,$img)) { //写入文件
+        if (!File::createFile($this->filePath, $img)) { //写入文件
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
         } else { //移动成功
             $this->stateInfo = StateMap::MAP_ARR[0];
@@ -280,7 +278,7 @@ class Uploader
         //替换日期事件
         $t = time();
         $d = explode('-', date("Y-y-m-d-H-i-s"));
-        $format = $this->config["pathFormat"];
+        $format = $this->config->getPathFormat();
         $format = str_replace("{yyyy}", $d[0], $format);
         $format = str_replace("{yy}", $d[1], $format);
         $format = str_replace("{mm}", $d[2], $format);
@@ -350,18 +348,17 @@ class Uploader
 
     /**
      * 获取当前上传成功文件的各项信息
-     * @return array
      */
-    public function getFileInfo()
+    public function getFileInfo():UploadResponse
     {
-        return array(
-            "state"    => $this->stateInfo,
-            "url"      => $this->fullName,
-            "title"    => $this->fileName,
-            "original" => $this->oriName,
-            "type"     => $this->fileType,
-            "size"     => $this->fileSize
-        );
+        $response = new UploadResponse();
+        $response->setState($this->stateInfo);
+        $response->setUrl($this->fullName);
+        $response->setTitle($this->fileName);
+        $response->setOriginal($this->oriName);
+        $response->setType($this->fileType);
+        $response->setSize($this->fileSize);
+        return $response;
     }
 
 }

@@ -10,7 +10,7 @@ namespace EasySwoole\Ueditor\Config;
 
 use EasySwoole\Spl\SplBean;
 
-class Config extends SplBean
+class UploadConfig extends SplBean
 {
     //新增的配置项
     protected $rootPath = EASYSWOOLE_ROOT;

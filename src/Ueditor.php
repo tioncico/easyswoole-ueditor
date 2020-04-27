@@ -32,7 +32,7 @@ class Ueditor
 
     function getConfig(array $configList = [])
     {
-        $configList = [];
+        $list = [];
         //默认config
         $defaultConfigList = [
             new CatcherConfig(),
@@ -42,24 +42,23 @@ class Ueditor
             new ImageManagerConfig(),
             new ScrawlConfig(),
             new SnapScreenConfig(),
-            new UploadConfig(),
             new VideoConfig(),
         ];
         /**
          * @var $config SplBean
          */
         foreach ($defaultConfigList as $config) {
-            $configList = array_merge($configList, $config->toArray());
+            $list = array_merge($list, $config->toArray());
         }
 
         /**
          * @var $config SplBean
          */
         foreach ($configList as $config) {
-            $configList = array_merge($configList, $config->toArray());
+            $list = array_merge($list, $config->toArray());
         }
 
-        return $configList;
+        return $list;
     }
 
     /**
@@ -93,7 +92,7 @@ class Ueditor
      * @author Tioncico
      * Time: 10:04
      */
-    function uploadScrawl($request, ?ScrawlConfig $scrawlConfig, ?UploadConfig $uploadConfig = null): UploadResponse
+    function uploadScrawl($request, ?ScrawlConfig $scrawlConfig=null, ?UploadConfig $uploadConfig = null): UploadResponse
     {
         $uploadConfig = $uploadConfig ?? new UploadConfig(['rootPath' => $this->rootPath]);
         $scrawlConfig = $scrawlConfig ?? new ScrawlConfig();
@@ -128,20 +127,23 @@ class Ueditor
         return $uploader->getFileInfo();
     }
 
-    function listImage(ImageManagerConfig $imageManagerConfig, $page = 1, $pageSize = 20): FileListResponse
+    function listImage(?ImageManagerConfig $imageManagerConfig = null, $page = 1, $pageSize = 20): FileListResponse
     {
+        $imageManagerConfig = $imageManagerConfig ?? new ImageManagerConfig();
         $fileManager = new FileManager($this->rootPath, $imageManagerConfig->getImageManagerListPath(), $imageManagerConfig->getImageManagerAllowFiles());
         return $fileManager->getFileList(($page - 1) * $pageSize, $pageSize);
     }
 
-    function listFile(FileManagerConfig $fileManagerConfig, $page = 1, $pageSize = 20)
+    function listFile(?FileManagerConfig $fileManagerConfig = null, $page = 1, $pageSize = 20)
     {
+        $fileManagerConfig = $fileManagerConfig ?? new FileManagerConfig();
         $fileManager = new FileManager($this->rootPath, $fileManagerConfig->getFileManagerListPath(), $fileManagerConfig->getFileManagerAllowFiles());
         return $fileManager->getFileList(($page - 1) * $pageSize, $pageSize);
     }
 
-    function catchImage(CatcherConfig $catcherConfig, array $remoteList, ?UploadConfig $uploadConfig = null)
+    function catchImage(CatcherConfig $catcherConfig, $remoteList = [], ?UploadConfig $uploadConfig = null)
     {
+        $catcherConfig = $catcherConfig ?? new CatcherConfig();
         $uploadConfig = $uploadConfig ?? new UploadConfig(['rootPath' => $this->rootPath]);
         $uploadConfig->setPathFormat($catcherConfig->getCatcherPathFormat());
         $uploadConfig->setMaxSize($catcherConfig->getCatcherMaxSize());

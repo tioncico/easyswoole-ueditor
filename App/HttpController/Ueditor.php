@@ -5,14 +5,9 @@ namespace App\HttpController;
 
 
 use EasySwoole\Http\AbstractInterface\Controller;
+use EasySwoole\Ueditor\UeditorController;
 
-class Ueditor extends Controller
+class Ueditor extends UeditorController
 {
 
-    public function index()
-    {
-        $ueditor = new \EasySwoole\Ueditor\Ueditor();
-
-        $this->writeJson(200,$ueditor->getConfig(),'ok');
-    }
 }

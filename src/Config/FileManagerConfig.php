@@ -15,7 +15,7 @@ class FileManagerConfig extends SplBean
 {
 
     /* 列出指定目录下的文件 */
-    protected $fileManagerActionName = 'listfile';
+    protected $fileManagerActionName = 'listFile';
     protected $fileManagerListPath = '/ueditor/php/upload/file/'; /* 指定要列出文件的目录 */
     protected $fileManagerUrlPrefix = ''; /* 文件访问路径前缀 */
     protected $fileManagerListSize = 20; /* 每次列出文件数量 */

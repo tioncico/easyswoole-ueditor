@@ -14,7 +14,7 @@ use EasySwoole\Spl\SplBean;
 class ImageManagerConfig extends SplBean
 {
     /* 列出指定目录下的图片 */
-    protected $imageManagerActionName = 'listimage';
+    protected $imageManagerActionName = 'listImage';
     protected $imageManagerListPath = '/ueditor/php/upload/image/'; /* 指定要列出图片的目录 */
     protected $imageManagerListSize = 20; /* 每次列出文件数量 */
     protected $imageManagerUrlPrefix = ''; /* 图片访问路径前缀 */

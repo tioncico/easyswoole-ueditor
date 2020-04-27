@@ -14,7 +14,7 @@ use EasySwoole\Spl\SplBean;
 class SnapScreenConfig extends SplBean
 {
     /* 截图工具上传 */
-    protected $snapscreeActionName = 'uploadimage';
+    protected $snapscreeActionName = 'uploadImage';
     protected $snapscreePathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}'; /* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $snapscreeUrlPrefix = ''; /* 图片访问路径前缀 */
     protected $snapscreeInsertAlign = 'none';/* 插入的图片浮动方式 */

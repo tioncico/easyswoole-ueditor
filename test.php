@@ -6,9 +6,7 @@
  * Time: 16:33
  */
 
-$config = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents("config.json")), true);
-foreach ($config as $key=>$value){
-    echo "protected \${$key} = ".var_export($value,1).";\n";
+include "./vendor/autoload.php";
 
-
-}
+$result = \EasySwoole\Utility\File::moveFile('dev.php',"./a/dev.php");
+var_dump($result);

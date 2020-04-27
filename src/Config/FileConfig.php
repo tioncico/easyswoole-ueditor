@@ -14,7 +14,7 @@ use EasySwoole\Spl\SplBean;
 class FileConfig extends SplBean
 {
     /* 上传文件配置 */
-    protected $fileActionName = 'uploadfile';
+    protected $fileActionName = 'uploadFile';
     protected $fileFieldName = 'upfile'; /* 提交的文件表单名称 */
     protected $filePathFormat = '/ueditor/php/upload/file/{yyyy}{mm}{dd}/{time}{rand:6}';/* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $fileUrlPrefix = ''; /* 文件访问路径前缀 */

@@ -114,11 +114,11 @@ class Uploader
         }
 
         //移动文件
-        if (!File::moveDirectory($file->getTempName(), $this->filePath)) { //移动失败
+        if (!File::moveFile($file->getTempName(), $this->filePath)) { //移动失败
             $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
             return;
         } else { //移动成功
-            $this->stateInfo = StateMap::MAP_ARR[0];
+            $this->stateInfo = UploadResponse::MAP_ARR[0];
         }
     }
 
@@ -158,7 +158,7 @@ class Uploader
         if (!File::createFile($this->filePath, $img)) { //写入文件
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
         } else { //移动成功
-            $this->stateInfo = StateMap::MAP_ARR[0];
+            $this->stateInfo = UploadResponse::MAP_ARR[0];
         }
     }
 
@@ -189,7 +189,7 @@ class Uploader
         preg_match('/^https*:\/\/(.+)/', $host_with_protocol, $matches);
         $host_without_protocol = count($matches) > 1 ? $matches[1] : '';
 
-        // 此时提取出来的可能是 ip 也有可能是域名，先获取 ip
+//        // 此时提取出来的可能是 ip 也有可能是域名，先获取 ip
         $ip = System::gethostbyname($host_without_protocol);
         // 判断是否是私有 ip
         if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)) {
@@ -197,22 +197,23 @@ class Uploader
             return;
         }
 
-        //获取请求头并检测死链
-        $heads = get_headers($imgUrl, 1);
-        if (!(stristr($heads[0], "200") && stristr($heads[0], "OK"))) {
+        //获取远程图片
+        $httpClient = new HttpClient($imgUrl);
+        $response = $httpClient->get();
+        $img = $response->getBody();
+        //请求结果判断
+        if (!(stristr($response->getStatusCode(), "200"))){
             $this->stateInfo = $this->getStateInfo("ERROR_DEAD_LINK");
             return;
         }
         //格式验证(扩展名验证和Content-Type验证)
         $fileType = strtolower(strrchr($imgUrl, '.'));
-        if (!in_array($fileType, $this->config['allowFiles']) || !isset($heads['Content-Type']) || !stristr($heads['Content-Type'], "image")) {
+        if (!in_array($fileType, $this->config->getAllowFiles()) || !isset($response->getHeaders()['content-type']) || !stristr($response->getHeaders()['content-type'], "image")) {
             $this->stateInfo = $this->getStateInfo("ERROR_HTTP_CONTENTTYPE");
             return;
         }
-        //获取远程图片
-        $httpClient = new HttpClient($imgUrl);
-        $response = $httpClient->get();
-        $img = $response->getBody();
+
+
         $this->file = $img;
         preg_match("/[\/]([^\/]*)[\.]?[^\.\/]*$/", $imgUrl, $m);
 
@@ -243,7 +244,7 @@ class Uploader
         if (!File::createFile($this->filePath, $img)) { //写入文件
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
         } else { //移动成功
-            $this->stateInfo = StateMap::MAP_ARR[0];
+            $this->stateInfo = UploadResponse::MAP_ARR[0];
         }
 
     }
@@ -255,7 +256,7 @@ class Uploader
      */
     private function getStateInfo($errCode)
     {
-        return !StateMap::MAP_ARR[$errCode] ? StateMap::MAP_ARR["ERROR_UNKNOWN"] : StateMap::MAP_ARR[$errCode];
+        return !UploadResponse::MAP_ARR[$errCode] ? UploadResponse::MAP_ARR["ERROR_UNKNOWN"] : UploadResponse::MAP_ARR[$errCode];
     }
 
     /**
@@ -266,7 +267,7 @@ class Uploader
     {
         $extensionName = MimeType::getExtFromStream($this->file);
         $extName = strtolower(strrchr($this->oriName, '.'));
-        return $extensionName ?? $extName;
+        return '.'.$extensionName ?? $extName;
     }
 
     /**

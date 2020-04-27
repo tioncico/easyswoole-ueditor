@@ -14,7 +14,7 @@ use EasySwoole\Spl\SplBean;
 class VideoConfig extends SplBean
 {
     /* 上传视频配置 */
-    protected $videoActionName = 'uploadvideo';
+    protected $videoActionName = 'uploadVideo';
     protected $videoFieldName = 'upfile'; /* 提交的视频表单名称 */
     protected $videoPathFormat = '/ueditor/php/upload/video/{yyyy}{mm}{dd}/{time}{rand:6}'; /* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $videoUrlPrefix = ''; /* 视频访问路径前缀 */

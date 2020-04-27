@@ -6,22 +6,22 @@
  * Time: 9:48
  */
 
-namespace EasySwoole\Ueditor;
+namespace EasySwoole\UEditor;
 
 
 use EasySwoole\Http\Request;
 use EasySwoole\Spl\SplBean;
-use EasySwoole\Ueditor\Config\CatcherConfig;
-use EasySwoole\Ueditor\Config\ImageManagerConfig;
-use EasySwoole\Ueditor\Config\SnapScreenConfig;
-use EasySwoole\Ueditor\Config\UploadConfig;
-use EasySwoole\Ueditor\Config\FileConfig;
-use EasySwoole\Ueditor\Config\FileManagerConfig;
-use EasySwoole\Ueditor\Config\ImageConfig;
-use EasySwoole\Ueditor\Config\ScrawlConfig;
-use EasySwoole\Ueditor\Config\VideoConfig;
+use EasySwoole\UEditor\Config\CatcherConfig;
+use EasySwoole\UEditor\Config\ImageManagerConfig;
+use EasySwoole\UEditor\Config\SnapScreenConfig;
+use EasySwoole\UEditor\Config\UploadConfig;
+use EasySwoole\UEditor\Config\FileConfig;
+use EasySwoole\UEditor\Config\FileManagerConfig;
+use EasySwoole\UEditor\Config\ImageConfig;
+use EasySwoole\UEditor\Config\ScrawlConfig;
+use EasySwoole\UEditor\Config\VideoConfig;
 
-class Ueditor
+class UEditor
 {
     protected $rootPath;
 

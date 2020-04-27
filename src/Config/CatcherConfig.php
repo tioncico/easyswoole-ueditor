@@ -6,7 +6,7 @@
  * Time: 17:34
  */
 
-namespace EasySwoole\Ueditor\Config;
+namespace EasySwoole\UEditor\Config;
 
 
 use EasySwoole\Spl\SplBean;
@@ -17,7 +17,7 @@ class CatcherConfig extends SplBean
     protected $catcherActionName = 'catchImage';
     protected $catcherLocalDomain = ['127.0.0.1', 'localhost', 'img.baidu.com',];
     protected $catcherFieldName = 'source'; /* 提交的图片列表表单名称 */
-    protected $catcherPathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}'; /* 上传保存路径,可以自定义保存路径和文件名格式 */
+    protected $catcherPathFormat = '/UEditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}'; /* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $catcherUrlPrefix = ''; /* 图片访问路径前缀 */
     protected $catcherMaxSize = 2048000; /* 上传大小限制，单位B */
     protected $catcherAllowFiles = ['.png', '.jpg', '.jpeg', '.gif', '.bmp',]; /* 抓取图片格式显示 */

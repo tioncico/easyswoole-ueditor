@@ -6,7 +6,7 @@
  * Time: 17:36
  */
 
-namespace EasySwoole\Ueditor\Config;
+namespace EasySwoole\UEditor\Config;
 
 
 use EasySwoole\Spl\SplBean;
@@ -15,7 +15,7 @@ class ImageManagerConfig extends SplBean
 {
     /* 列出指定目录下的图片 */
     protected $imageManagerActionName = 'listImage';
-    protected $imageManagerListPath = '/ueditor/php/upload/image/'; /* 指定要列出图片的目录 */
+    protected $imageManagerListPath = '/UEditor/php/upload/image/'; /* 指定要列出图片的目录 */
     protected $imageManagerListSize = 20; /* 每次列出文件数量 */
     protected $imageManagerUrlPrefix = ''; /* 图片访问路径前缀 */
     protected $imageManagerInsertAlign = 'none'; /* 插入的图片浮动方式 */

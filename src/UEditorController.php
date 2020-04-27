@@ -6,13 +6,13 @@
  * Time: 11:05
  */
 
-namespace EasySwoole\Ueditor;
+namespace EasySwoole\UEditor;
 
 
 use EasySwoole\Http\AbstractInterface\Controller;
-use EasySwoole\Ueditor\Config\CatcherConfig;
+use EasySwoole\UEditor\Config\CatcherConfig;
 
-abstract class UeditorController extends Controller
+abstract class UEditorController extends Controller
 {
     protected $rootPath = EASYSWOOLE_ROOT . '/Static';
 
@@ -57,59 +57,59 @@ abstract class UeditorController extends Controller
 
     protected function catchImage()
     {
-        $ueditor = new Ueditor($this->rootPath);
+        $UEditor = new UEditor($this->rootPath);
         $catchImageConfig = new CatcherConfig();
         $field = $catchImageConfig->getCatcherFieldName();
         $remoteList = $this->request()->getRequestParam($field);
-        $result = $ueditor->catchImage($catchImageConfig, $remoteList);
+        $result = $UEditor->catchImage($catchImageConfig, $remoteList);
         $this->response()->write(json_encode($result));
     }
 
     protected function uploadImage()
     {
-        $ueditor = new Ueditor($this->rootPath);
-        $result = $ueditor->uploadImage($this->request());
+        $UEditor = new UEditor($this->rootPath);
+        $result = $UEditor->uploadImage($this->request());
         $this->response()->write(json_encode($result));
     }
 
     protected function uploadScrawl()
     {
-        $ueditor = new Ueditor($this->rootPath);
-        $result = $ueditor->uploadScrawl($this->request());
+        $UEditor = new UEditor($this->rootPath);
+        $result = $UEditor->uploadScrawl($this->request());
         $this->response()->write(json_encode($result));
     }
 
     protected function uploadVideo()
     {
-        $ueditor = new Ueditor($this->rootPath);
-        $result = $ueditor->uploadVideo($this->request());
+        $UEditor = new UEditor($this->rootPath);
+        $result = $UEditor->uploadVideo($this->request());
         $this->response()->write(json_encode($result));
     }
 
     protected function uploadFile()
     {
-        $ueditor = new Ueditor($this->rootPath);
-        $result = $ueditor->uploadFile($this->request());
+        $UEditor = new UEditor($this->rootPath);
+        $result = $UEditor->uploadFile($this->request());
         $this->response()->write(json_encode($result));
     }
 
     protected function listImage()
     {
-        $ueditor = new Ueditor($this->rootPath);
-        $result = $ueditor->listImage();
+        $UEditor = new UEditor($this->rootPath);
+        $result = $UEditor->listImage();
         $this->response()->write(json_encode($result));
     }
 
     protected function listFile()
     {
-        $ueditor = new Ueditor($this->rootPath);
-        $result = $ueditor->listFile();
+        $UEditor = new UEditor($this->rootPath);
+        $result = $UEditor->listFile();
         $this->response()->write(json_encode($result));
     }
 
     protected function config()
     {
-        $ueditor = new Ueditor();
-        $this->response()->write(json_encode($ueditor->getConfig()));
+        $UEditor = new UEditor();
+        $this->response()->write(json_encode($UEditor->getConfig()));
     }
 }

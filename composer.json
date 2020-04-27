@@ -1,10 +1,10 @@
 {
-    "name": "easyswoole/ueditor",
+    "name": "easyswoole/u-editor",
     "type": "library",
     "description": "百度编辑器easyswoole-composer版本",
     "keywords": [
         "swoole",
-        "ueditor",
+        "UEditor",
         "easyswoole"
     ],
     "homepage": "https://www.easyswoole.com/",
@@ -21,13 +21,13 @@
     },
     "autoload": {
         "psr-4": {
-            "EasySwoole\\Ueditor\\": "src/",
+            "EasySwoole\\UEditor\\": "src/",
             "App\\": "App/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EasySwoole\\Ueditor\\Test\\": "tests/",
+            "EasySwoole\\UEditor\\Test\\": "tests/",
             "App\\": "App/"
         }
     }

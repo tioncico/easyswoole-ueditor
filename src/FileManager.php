@@ -6,7 +6,7 @@
  * Time: 10:21
  */
 
-namespace EasySwoole\Ueditor;
+namespace EasySwoole\UEditor;
 
 
 class FileManager

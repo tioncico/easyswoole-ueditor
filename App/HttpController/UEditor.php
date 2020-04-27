@@ -5,9 +5,9 @@ namespace App\HttpController;
 
 
 use EasySwoole\Http\AbstractInterface\Controller;
-use EasySwoole\Ueditor\UeditorController;
+use EasySwoole\UEditor\UEditorController;
 
-class Ueditor extends UeditorController
+class UEditor extends UEditorController
 {
 
 }

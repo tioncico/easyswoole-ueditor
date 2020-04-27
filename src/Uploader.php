@@ -1,11 +1,11 @@
 <?php
 
-namespace EasySwoole\Ueditor;
+namespace EasySwoole\UEditor;
 
 use EasySwoole\Http\Message\UploadFile;
 use EasySwoole\Http\Request;
 use EasySwoole\HttpClient\HttpClient;
-use EasySwoole\Ueditor\Config\UploadConfig;
+use EasySwoole\UEditor\Config\UploadConfig;
 use EasySwoole\Utility\File;
 use EasySwoole\Utility\MimeType;
 use Swoole\Coroutine\System;

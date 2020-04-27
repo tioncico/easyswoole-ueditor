@@ -6,7 +6,7 @@
  * Time: 17:32
  */
 
-namespace EasySwoole\Ueditor\Config;
+namespace EasySwoole\UEditor\Config;
 
 
 use EasySwoole\Spl\SplBean;
@@ -16,7 +16,7 @@ class FileConfig extends SplBean
     /* 上传文件配置 */
     protected $fileActionName = 'uploadFile';
     protected $fileFieldName = 'upfile'; /* 提交的文件表单名称 */
-    protected $filePathFormat = '/ueditor/php/upload/file/{yyyy}{mm}{dd}/{time}{rand:6}';/* 上传保存路径,可以自定义保存路径和文件名格式 */
+    protected $filePathFormat = '/UEditor/php/upload/file/{yyyy}{mm}{dd}/{time}{rand:6}';/* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $fileUrlPrefix = ''; /* 文件访问路径前缀 */
     protected $fileMaxSize = 51200000; /* 上传大小限制，单位B，默认50MB */
     protected $fileAllowFiles = ['.png', '.jpg', '.jpeg', '.gif', '.bmp', '.flv', '.swf', '.mkv', '.avi', '.rm', '.rmvb', '.mpeg', '.mpg', '.ogg', '.ogv', '.mov', '.wmv', '.mp4', '.webm', '.mp3', '.wav', '.mid', '.rar', '.zip', '.tar', '.gz', '.7z', '.bz2', '.cab', '.iso', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pdf', '.txt', '.md', '.xml',

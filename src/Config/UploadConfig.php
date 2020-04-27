@@ -6,7 +6,7 @@
  * Time: 15:39
  */
 
-namespace EasySwoole\Ueditor\Config;
+namespace EasySwoole\UEditor\Config;
 
 use EasySwoole\Spl\SplBean;
 

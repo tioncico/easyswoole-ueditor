@@ -6,7 +6,7 @@
  * Time: 17:32
  */
 
-namespace EasySwoole\Ueditor\Config;
+namespace EasySwoole\UEditor\Config;
 
 
 use EasySwoole\Spl\SplBean;
@@ -22,7 +22,7 @@ class ImageConfig extends SplBean
     protected $imageCompressBorder = 1600; /* 图片压缩最长边限制 */
     protected $imageInsertAlign = 'none'; /* 插入的图片浮动方式 */
     protected $imageUrlPrefix = ''; /* 图片访问路径前缀 */
-    protected $imagePathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}';
+    protected $imagePathFormat = '/UEditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}';
 
     /*上传保存路径,可以自定义保存路径和文件名格式
      {filename} 会替换成原文件名,配置这项需要注意中文乱码问题
@@ -36,7 +36,7 @@ class ImageConfig extends SplBean
      {ii} 会替换成两位分钟
      {ss} 会替换成两位秒
      非法字符 \ : * ? " < > |
-     具请体看线上文档: fex.baidu.com/ueditor/#use-format_upload_filename */
+     具请体看线上文档: fex.baidu.com/UEditor/#use-format_upload_filename */
 
 
     /**

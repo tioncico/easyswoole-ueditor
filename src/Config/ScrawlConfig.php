@@ -6,7 +6,7 @@
  * Time: 17:32
  */
 
-namespace EasySwoole\Ueditor\Config;
+namespace EasySwoole\UEditor\Config;
 
 
 use EasySwoole\Spl\SplBean;
@@ -17,7 +17,7 @@ class ScrawlConfig extends SplBean
     /* 涂鸦图片上传配置项 */
     protected $scrawlActionName='uploadScrawl';
     protected $scrawlFieldName = 'upfile';/* 提交的图片表单名称 */
-    protected $scrawlPathFormat = '/ueditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}';/* 上传保存路径,可以自定义保存路径和文件名格式 */
+    protected $scrawlPathFormat = '/UEditor/php/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}';/* 上传保存路径,可以自定义保存路径和文件名格式 */
     protected $scrawlMaxSize = 2048000;/* 上传大小限制，单位B */
     protected $scrawlUrlPrefix = '';/* 图片访问路径前缀 */
     protected $scrawlInsertAlign = 'none';
